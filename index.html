@@ -1,85 +1,82 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ارسال اطلاعات</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visa Form</title>
   <style>
     body {
       font-family: sans-serif;
-      margin: 0;
-      padding: 0;
+      padding: 20px;
       background: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
-
     .form-container {
+      max-width: 400px;
+      margin: auto;
       background: white;
       padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    h2 {
-      text-align: center;
-    }
-
-    input, button {
+    .form-container input {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin-top: 10px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
     }
-
     button {
-      background-color: #4CAF50;
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
       color: white;
       border: none;
-      font-weight: bold;
+      border-radius: 8px;
+      font-size: 16px;
     }
-
-    @media screen and (min-width: 768px) {
-      .form-container {
-        width: 400px;
-      }
+    .success {
+      margin-top: 15px;
+      color: green;
+      text-align: center;
     }
   </style>
 </head>
 <body>
+
   <div class="form-container">
-    <h2>ارسال اطلاعات</h2>
-    <form id="myForm">
-      <input type="text" name="name" placeholder="نام" required>
-      <input type="email" name="email" placeholder="ایمیل" required>
-      <button type="submit">ارسال</button>
+    <h2>Visa Form</h2>
+    <form id="visaForm">
+      <input type="text" name="Name" placeholder="Name" required>
+      <input type="text" name="LastName" placeholder="Last Name" required>
+      <input type="date" name="DOB" placeholder="Date of Birth" required>
+      <input type="text" name="PassportNo" placeholder="Passport No" required>
+      <input type="text" name="ClientNo" placeholder="Client No" required>
+      <button type="submit">Submit</button>
+      <div class="success" id="successMsg" style="display: none;">Form submitted successfully!</div>
     </form>
-    <p id="responseMsg" style="text-align:center; color:green;"></p>
   </div>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwkn7vnP-2qdj5UA-lkz7MQlxlvtjkPOVYN8IyIP47Gf4Q4tVoedJEYDP4etBjayG5E/exec';
-    const form = document.getElementById('myForm');
-    const responseMsg = document.getElementById('responseMsg');
+    const form = document.getElementById('visaForm');
+    const successMsg = document.getElementById('successMsg');
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          responseMsg.innerText = "اطلاعات با موفقیت ارسال شد.";
-          form.reset();
-        })
-        .catch(error => {
-          responseMsg.innerText = "خطا در ارسال اطلاعات.";
-          console.error('Error!', error.message);
-        });
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => (data[key] = value));
+
+      fetch('https://script.google.com/macros/s/AKfycbwkn7vnP-2qdj5UA-lkz7MQlxlvtjkPOVYN8IyIP47Gf4Q4tVoedJEYDP4etBjayG5E/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(data)
+      });
+
+      form.reset();
+      successMsg.style.display = 'block';
     });
   </script>
+
 </body>
 </html>
