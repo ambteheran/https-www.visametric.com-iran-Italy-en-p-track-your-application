@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Humanitarian Visa Application Form - Italy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        /* General Styles - Dark & Formal */
+        /* General Styles - Official & Professional */
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e; /* Dark background */
-            color: #e0e0e0; /* Light text */
+            background-color: #eef2f6; /* Light, calming background */
+            color: #333; /* Darker text for readability */
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -25,22 +25,22 @@
         .container {
             max-width: 950px;
             margin: 30px auto;
-            background: #16213e; /* Slightly lighter dark for container */
+            background: #ffffff; /* Clean white background for the form */
             padding: 35px;
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            border: 1px solid #0f3460; /* Subtle border */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            border: 1px solid #dcdfe6; /* Light border */
             position: relative; /* Needed for logo positioning */
         }
 
         .header-logo {
             position: absolute;
-            top: 20px;
-            left: 20px; /* Positioned on the left side */
-            width: 80px; /* Adjust size as needed */
-            height: 80px;
+            top: 25px;
+            left: 25px; /* Positioned on the left side */
+            width: 70px; /* Adjust size as needed */
+            height: 70px;
             border-radius: 50%; /* If you want a circular logo */
-            background-color: #e94560; /* Placeholder color, replace with image */
+            background-color: #0056b3; /* Placeholder color, ideally your brand color */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -48,7 +48,7 @@
             color: white;
             font-weight: bold;
             overflow: hidden;
-            border: 2px solid #0f3460;
+            border: 2px solid #eef2f6;
             z-index: 10; /* Ensure it's above other content */
         }
 
@@ -59,22 +59,23 @@
         }
 
         h2 {
-            font-family: 'Playfair Display', serif;
-            color: #e94560; /* Accent color for headings */
-            border-bottom: 2px solid #0f3460;
+            font-family: 'Open Sans', sans-serif;
+            color: #0056b3; /* Strong primary color for headings */
+            border-bottom: 2px solid #eef2f6;
             padding-bottom: 12px;
             margin-bottom: 30px;
             text-align: center;
             font-size: 2.5em;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            padding-top: 20px; /* Space for logo */
         }
 
         h3 {
-            font-family: 'Playfair Display', serif;
-            color: #e94560; /* Accent color for subheadings */
+            font-family: 'Open Sans', sans-serif;
+            color: #0056b3; /* Strong primary color for subheadings */
             margin-top: 35px;
-            border-bottom: 1px solid #0f3460;
+            border-bottom: 1px solid #eef2f6;
             padding-bottom: 8px;
             font-size: 1.6em;
             margin-bottom: 20px;
@@ -83,8 +84,8 @@
         label {
             display: block;
             margin-bottom: 10px;
-            font-weight: bold;
-            color: #c0c0c0;
+            font-weight: 600; /* Slightly bolder */
+            color: #555;
         }
 
         input[type="text"],
@@ -97,12 +98,12 @@
             width: calc(100% - 24px); /* Adjusting for padding and border */
             padding: 12px;
             margin-bottom: 20px;
-            border: 1px solid #0f3460;
+            border: 1px solid #c9d2da; /* Lighter border for inputs */
             border-radius: 6px;
             box-sizing: border-box;
             font-size: 1.05em;
-            background-color: #0f3460; /* Darker input background */
-            color: #e0e0e0;
+            background-color: #f8fbfd; /* Very light background for inputs */
+            color: #333;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -113,23 +114,25 @@
         input[type="number"]:focus,
         textarea:focus,
         select:focus {
-            border-color: #e94560;
-            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
+            border-color: #007bff; /* Standard blue on focus */
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
             outline: none;
         }
 
         input[type="radio"],
         input[type="checkbox"] {
-            margin-left: 8px;
-            margin-right: 5px;
-            transform: scale(1.2); /* Slightly larger checkboxes/radios */
+            margin-right: 8px; /* For LTR */
+            margin-left: 5px;
+            transform: scale(1.1); /* Slightly larger checkboxes/radios */
+            vertical-align: middle; /* Align with text */
         }
 
         .radio-group label, .checkbox-group label {
             display: inline-block;
-            margin-right: 20px; /* Changed from margin-left for LTR */
+            margin-right: 20px; /* Spacing between options */
             font-weight: normal;
-            color: #e0e0e0;
+            color: #333;
+            vertical-align: middle;
         }
 
         .file-upload {
@@ -141,16 +144,16 @@
         }
 
         .file-upload input[type="file"] {
-            background-color: #0f3460;
-            border: 1px solid #0f3460;
+            background-color: #f8fbfd;
+            border: 1px solid #c9d2da;
             padding: 10px;
             border-radius: 6px;
             cursor: pointer;
-            color: #e0e0e0;
+            color: #333;
         }
 
         .file-upload input[type="file"]::file-selector-button {
-            background-color: #e94560;
+            background-color: #007bff; /* Primary button color */
             color: white;
             padding: 8px 15px;
             border: none;
@@ -161,7 +164,7 @@
         }
 
         .file-upload input[type="file"]::file-selector-button:hover {
-            background-color: #d1304d;
+            background-color: #0056b3;
         }
 
         .button-group {
@@ -170,7 +173,7 @@
         }
 
         .button-group button {
-            background-color: #e94560;
+            background-color: #28a745; /* Success green for submit */
             color: white;
             padding: 14px 30px;
             border: none;
@@ -182,24 +185,24 @@
         }
 
         .button-group button:hover {
-            background-color: #d1304d;
+            background-color: #218838;
             transform: translateY(-2px);
         }
 
         .button-group button[type="button"] { /* Save Draft button */
-            background-color: #3e206b;
+            background-color: #6c757d; /* Muted gray for save draft */
         }
 
         .button-group button[type="button"]:hover {
-            background-color: #2a114b;
+            background-color: #5a6268;
         }
 
         .form-section {
             margin-bottom: 40px;
             padding: 25px;
-            border: 1px solid #0f3460;
+            border: 1px solid #eef2f6; /* Light border for sections */
             border-radius: 10px;
-            background-color: #0f3460; /* Darker section background */
+            background-color: #fdfefe; /* Very light background for sections */
         }
 
         #personalPhotoPreviewContainer {
@@ -207,10 +210,10 @@
             margin-top: 20px;
             margin-bottom: 20px;
             padding: 15px;
-            border: 1px dashed #e94560;
+            border: 1px dashed #c9d2da; /* Light dashed border */
             border-radius: 8px;
             display: none; /* Hidden by default */
-            background-color: rgba(233, 69, 96, 0.1);
+            background-color: #f0f4f8; /* Slightly darker background for preview */
         }
 
         #personalPhotoPreview {
@@ -218,13 +221,14 @@
             max-height: 150px;
             border-radius: 50%; /* Circular image */
             object-fit: cover;
-            border: 3px solid #e94560;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            border: 3px solid #007bff; /* Blue border for image */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         #photoPlaceholderText {
-            color: #c0c0c0;
+            color: #777;
             margin-top: 10px;
+            font-style: italic;
         }
 
         #otherReasonText, #asylumCountry, #caseNumberOrg {
@@ -378,7 +382,7 @@
                 <input type="text" id="cityDistrict" name="cityDistrict" required>
 
                 <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+XX XXX XXXXXXX" required>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+XX XXX XXXXXXX (e.g., +93 789 123456)" required>
 
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" required>
@@ -469,37 +473,37 @@
             <div class="form-section">
                 <h3>Section 5: Document Upload</h3>
                 <div class="file-upload">
-                    <label for="passportCopy">Copy of Passport or Tazkira:</label>
+                    <label for="passportCopy">Copy of Passport or Tazkira (PDF, JPG, PNG):</label>
                     <input type="file" id="passportCopy" name="passportCopy" accept=".pdf, .jpg, .png" required>
                 </div>
 
                 <div class="file-upload">
-                    <label for="personalPhotoUpload">Personal Photo:</label>
+                    <label for="personalPhotoUpload">Personal Photo (JPG, PNG):</label>
                     <input type="file" id="personalPhotoUpload" name="personalPhotoUpload" accept=".jpg, .png" required>
                 </div>
 
                 <div class="file-upload">
-                    <label for="threatEvidence">Threat Evidence (Security report, threat letter, official complaint):</label>
+                    <label for="threatEvidence">Threat Evidence (Security report, threat letter, official complaint) (PDF, JPG, PNG - Multiple files allowed):</label>
                     <input type="file" id="threatEvidence" name="threatEvidence" accept=".pdf, .jpg, .png" multiple>
                 </div>
 
                 <div class="file-upload">
-                    <label for="unhcrLetters">UNHCR/NGO Letters:</label>
+                    <label for="unhcrLetters">UNHCR/NGO Letters (PDF, JPG, PNG - Multiple files allowed):</label>
                     <input type="file" id="unhcrLetters" name="unhcrLetters" accept=".pdf, .jpg, .png" multiple>
                 </div>
 
                 <div class="file-upload">
-                    <label for="invitationLetter">Invitation/Support Letter:</label>
+                    <label for="invitationLetter">Invitation/Support Letter (PDF, JPG, PNG):</label>
                     <input type="file" id="invitationLetter" name="invitationLetter" accept=".pdf, .jpg, .png">
                 </div>
 
                 <div class="file-upload">
-                    <label for="medicalCertificate">Medical Certificate (if applicable):</label>
+                    <label for="medicalCertificate">Medical Certificate (if applicable) (PDF, JPG, PNG):</label>
                     <input type="file" id="medicalCertificate" name="medicalCertificate" accept=".pdf, .jpg, .png">
                 </div>
 
                 <div class="file-upload">
-                    <label for="additionalDocs">Any Additional Supporting Documents for Humanitarian Status:</label>
+                    <label for="additionalDocs">Any Additional Supporting Documents for Humanitarian Status (PDF, JPG, PNG - Multiple files allowed):</label>
                     <input type="file" id="additionalDocs" name="additionalDocs" accept=".pdf, .jpg, .png" multiple>
                 </div>
             </div>
@@ -592,7 +596,7 @@
             });
 
             // --- Personal Photo Preview ---
-            const personalPhotoInput = document.getElementById('personalPhotoUpload'); // Corrected ID
+            const personalPhotoInput = document.getElementById('personalPhotoUpload');
             const personalPhotoPreview = document.getElementById('personalPhotoPreview');
             const personalPhotoPreviewContainer = document.getElementById('personalPhotoPreviewContainer');
             const photoPlaceholderText = document.getElementById('photoPlaceholderText');
@@ -663,9 +667,9 @@
                 const { jsPDF } = window.jspdf;
                 const element = document.getElementById('formContainer'); // The element to convert to PDF
 
-                // Temporarily hide buttons and logo for PDF generation if they shouldn't appear
+                // Temporarily hide elements that shouldn't appear in the PDF (like buttons, logo text)
                 document.querySelectorAll('.button-group').forEach(el => el.style.display = 'none');
-                document.querySelector('.header-logo').style.display = 'none';
+                document.querySelector('.header-logo').style.display = 'none'; // Hide the logo container
 
                 try {
                     const canvas = await html2canvas(element, { scale: 2, logging: true, useCORS: true });
@@ -693,8 +697,8 @@
                     alert("Failed to generate PDF. Please try again.");
                 } finally {
                     // Restore hidden elements
-                    document.querySelectorAll('.button-group').forEach(el => el.style.display = 'block');
-                    document.querySelector('.header-logo').style.display = 'flex'; // Use flex if it was flex
+                    document.querySelectorAll('.button-group').forEach(el => el.style.display = 'flex'); // Buttons back to flex
+                    document.querySelector('.header-logo').style.display = 'flex'; // Logo container back to flex
                 }
             }
 
